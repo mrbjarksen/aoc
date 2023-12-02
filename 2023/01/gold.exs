@@ -25,6 +25,6 @@ get_number = fn line ->
 end
 
 IO.stream()
-  |> Enum.map(get_number)
-  |> Enum.sum
-  |> IO.puts
+|> Enum.map(get_number)
+|> Enum.sum
+|> IO.puts
