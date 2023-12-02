@@ -14,17 +14,18 @@ parse_digit = fn digit ->
 end
 
 get_number = fn line ->
-  numbers = ~r/(?=(\d|one|two|three|four|five|six|seven|eight|nine))/
+  numbers =
+    ~r/(?=(\d|one|two|three|four|five|six|seven|eight|nine))/
     |> Regex.scan(line, capture: :all_but_first)
     |> Enum.map(&hd/1)
 
   first = List.first(numbers) |> parse_digit.()
   last = List.last(numbers) |> parse_digit.()
 
-  10*first + last
+  10 * first + last
 end
 
 IO.stream()
 |> Enum.map(get_number)
-|> Enum.sum
-|> IO.puts
+|> Enum.sum()
+|> IO.puts()
