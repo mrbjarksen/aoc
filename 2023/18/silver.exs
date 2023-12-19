@@ -20,7 +20,6 @@ trench =
 {min_j, max_j} = Map.keys(trench) |> Enum.map(&elem(&1, 1)) |> Enum.min_max()
 
 Enum.map(min_i..max_i, fn i ->
-  IO.write("#{i}: ")
   Enum.reduce(min_j..max_j, {0, nil, false}, fn j, {k, last_dir, inside} ->
     check_dir =
       cond do
@@ -44,7 +43,6 @@ Enum.map(min_i..max_i, fn i ->
     end
   end)
   |> elem(0)
-  |> IO.inspect()
 end)
 |> Enum.sum()
 |> IO.puts()
